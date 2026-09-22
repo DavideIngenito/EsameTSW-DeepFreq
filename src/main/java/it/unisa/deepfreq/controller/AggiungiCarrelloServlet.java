@@ -3,6 +3,7 @@ package it.unisa.deepfreq.controller;
 import it.unisa.deepfreq.dao.ProdottoDAO;
 import it.unisa.deepfreq.model.Carrello;
 import it.unisa.deepfreq.model.Prodotto;
+import it.unisa.deepfreq.model.Utente;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,25 +19,27 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+        HttpSession session = request.getSession();
 
+
+        int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         Prodotto p = prodottoDAO.estraiPerId(idProdotto);
 
         if (p != null) {
-            HttpSession session = request.getSession();
             Carrello carrello = (Carrello) session.getAttribute("carrello");
-
-            // Se non esiste ancora un carrello in sessione, lo creiamo
             if (carrello == null) {
                 carrello = new Carrello();
                 session.setAttribute("carrello", carrello);
             }
-
             carrello.aggiungiProdotto(p);
         }
 
-        // Dopo aver aggiunto, rimandiamo l'utente alla pagina del carrello
-        response.sendRedirect(request.getContextPath() + "/carrello");
+        String referer = request.getHeader("referer");
+        if (referer != null) {
+            response.sendRedirect(referer);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/catalogo");
+        }
     }
 }

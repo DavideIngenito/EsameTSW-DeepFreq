@@ -1,0 +1,38 @@
+.wishlist-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.wishlist-title {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 2px solid #111111;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-remove-wishlist {
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+.btn-remove-wishlist:hover {
+    color: #d9534f;
+}
+
+
+
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}

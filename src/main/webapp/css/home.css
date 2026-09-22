@@ -1,0 +1,417 @@
+/* Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+
+:root {
+    --bg-main: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --text-main: #111111;
+    --text-muted: #666666;
+    --header-bg: #000000;
+    --header-text: #FFFFFF;
+    --accent: #FFEE32;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 90px;
+    background-color: var(--header-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 65px;
+    width: auto;
+    display: block;
+    transform: scale(1.8);
+    transform-origin: left center;
+    margin: 45px 60px 45px 0px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* ICONE HEADER */
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-icons a {
+    color: var(--header-text);
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.header-icons a:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* CAROSELLO */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.slide-content h2 {
+    font-size: 3em;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.slide-content p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    color: #eeeeee;
+}
+
+.btn-yellow {
+    background-color: var(--accent);
+    color: #000000;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-yellow:hover {
+    background-color: #e6d52b;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(0,0,0,0.5);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+.prev:hover, .next:hover { color: var(--accent); }
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* GRIGLIA PRODOTTI */
+.section-title {
+    text-align: center;
+    margin: 60px 0 30px;
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 5%;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--bg-card);
+    width: 260px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f5f5f5;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--accent);
+    color: #000;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: left;
+}
+
+.titolo {
+    font-size: 1.1em;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artista {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.prezzo {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.btn-cart {
+    width: 100%;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-cart:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+}
+
+
+
+
+
+
+@media screen and (max-width: 900px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 10px 5%;
+        gap: 10px 25px;
+    }
+
+    .logo img {
+        height: 45px;
+        margin: 0;
+        transform: none;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+
+    .header-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    header {
+        position: static;
+    }
+
+
+    .carousel-container {
+        height: 60vh;
+        min-height: 340px;
+    }
+
+    .slide {
+        padding: 0 6%;
+    }
+
+    .slide-content h2 {
+        font-size: 1.8em;
+    }
+
+    .slide-content p {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .prev, .next {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .prev { left: 5px; }
+    .next { right: 5px; }
+
+    .section-title {
+        font-size: 1.5em;
+        margin: 40px 0 20px;
+    }
+
+    .grid-container {
+        gap: 20px;
+    }
+
+    /* (body davanti al selettore serve a battere gli stili scritti dentro le JSP) */
+    body .cart-container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .cart-item > div:first-child {
+        flex: 1 1 100% !important;
+    }
+
+
+    body .admin-container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .admin-form > div[style*="display: flex"] {
+        flex-direction: column;
+        gap: 0 !important;
+    }
+
+
+    body .success-container {
+        margin: 30px 10px;
+        padding: 30px 15px;
+    }
+}
+
+
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* FOOTER */
+.site-footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: auto;
+    border-top: 3px solid #ffd700;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #aaa;
+}
